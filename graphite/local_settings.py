@@ -1,6 +1,6 @@
 from os import environ
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 # Set SECRET_KEY if passed in via environment variable
 try:
