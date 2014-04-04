@@ -4,9 +4,9 @@
     graphiteHost: process.env.GRAPHITE_HOST || "localhost",
     port: Number(process.env.STATSD_PORT) || 8125,
     backends: [ "./backends/graphite" ],
-    debug: !!process.env.DEBUG,
-    dumpMessages: !!process.env.DEBUG,
-    flushInterval: 1
+    debug: true,
+    dumpMessages: true,
+    flushInterval: 1000
   };
 })();
 
