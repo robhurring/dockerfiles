@@ -14,7 +14,7 @@ RUN     mkdir -p /var/log/supervisor
 ADD     ./config.js ./statsd/config.js
 ADD     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-EXPOSE  :8125/udp
+EXPOSE  8125/udp
 EXPOSE  8126/tcp
 
-CMD ["/usr/bin/supervisord"]
+# CMD ["/usr/bin/supervisord"]
