@@ -1,20 +1,20 @@
 # DOCKER-VERSION 0.8.1
 
-from    ubuntu:12.10
-run     echo "deb http://archive.ubuntu.com/ubuntu quantal main universe" >> /etc/apt/sources.list
-run     apt-get -y update
+FROM    ubuntu:12.10
+RUN     echo "deb http://archive.ubuntu.com/ubuntu quantal main universe" >> /etc/apt/sources.list
+RUN     apt-get -y update
 
-run     apt-get -y install wget git python supervisor
-run     wget -O /tmp/node-v0.11.0.tar.gz http://nodejs.org/dist/v0.11.0/node-v0.11.0-linux-x64.tar.gz
-run     tar -C /usr/local/ --strip-components=1 -zxvf /tmp/node-v0.11.0.tar.gz
-run     rm /tmp/node-v0.11.0.tar.gz
-run     git clone git://github.com/etsy/statsd.git statsd
-run     mkdir -p /var/log/supervisor
+RUN     apt-get -y install wget git python supervisor
+RUN     wget -O /tmp/node-v0.11.0.tar.gz http://nodejs.org/dist/v0.11.0/node-v0.11.0-linux-x64.tar.gz
+RUN     tar -C /usr/local/ --strip-components=1 -zxvf /tmp/node-v0.11.0.tar.gz
+RUN     rm /tmp/node-v0.11.0.tar.gz
+RUN     git clone git://github.com/etsy/statsd.git statsd
+RUN     mkdir -p /var/log/supervisor
 
-add     ./config.js ./statsd/config.js
-add     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD     ./config.js ./statsd/config.js
+ADD     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-expose  :8125/udp
-expose  8126/tcp
+EXPOSE  :8125/udp
+EXPOSE  8126/tcp
 
-cmd     supervisord
+CMD ["/usr/bin/supervisord"]
