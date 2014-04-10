@@ -1,6 +1,6 @@
 # DOCKER-VERSION 0.8.1
 
-from    ubuntu:12.10
+from    ubuntu:12.04
 run echo 'deb http://us.archive.ubuntu.com/ubuntu/ precise universe' >> /etc/apt/sources.list
 run apt-get -y update
 

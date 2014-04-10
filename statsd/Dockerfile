@@ -1,6 +1,6 @@
 # DOCKER-VERSION 0.8.1
 
-FROM    ubuntu:12.10
+FROM    ubuntu:12.04
 RUN     echo "deb http://archive.ubuntu.com/ubuntu quantal main universe" >> /etc/apt/sources.list
 RUN     apt-get -y update
 
