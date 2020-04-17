@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set +e
+
+open -a XQuartz
+xhost +127.0.0.1
+
+exec docker run -d --rm --name groot \
+  -v $HOME/Documents/groot:/home/groot/documents \
+  -e DISPLAY=host.docker.internal:0 \
+  groot "$@"
